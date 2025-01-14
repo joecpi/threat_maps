@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cyber Threat Maps</title>
+<style>
+  html, body, iframe {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none; 
+  }
+</style>
+</head>
+<body>
+
+<iframe id="threatMapFrame" src="https://threatmap.checkpoint.com/"></iframe>
+
+<script>
+  const threatMapUrls = [
+    "https://threatmap.checkpoint.com/",
+    "https://threatmap.fortiguard.com/",
+    "https://livethreatmap.radware.com/",
+    "https://threatmap.bitdefender.com/",
+    "https://www.digitalattackmap.com/#anim=1&color=0&country=US&list=0&time=18212&view=map"
+  ];
+  let currentMapIndex = 0;
+
+  function changeThreatMap() {
+    document.getElementById('threatMapFrame').src = threatMapUrls[currentMapIndex];
+    currentMapIndex = (currentMapIndex + 1) % threatMapUrls.length; 
+  }
+
+  // Change the map every 3 minutes (180000 milliseconds)
+  setInterval(changeThreatMap, 180000); 
+</script>
+
+</body>
+</html>
